@@ -22,6 +22,7 @@ class Distance_wrapper{
 	
 	public:
 		Distance_wrapper(Distance_core const * const);
+		Distance_wrapper() = delete;
 		Distance_wrapper convert_to_meter();
 		Distance_wrapper convert_to_feet();
 		Distance_wrapper convert_to_leagues();
@@ -33,7 +34,9 @@ class Distance_wrapper{
 		bool operator<(Distance_wrapper other);
 		bool operator>(Distance_wrapper other);
 		friend std::ostream& operator<<(std::ostream&, Distance_wrapper const);
-		
+		~Distance_wrapper(){
+			delete _content;
+		}
 };
 
 class Distance_meter : public Distance_core {
