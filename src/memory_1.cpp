@@ -15,6 +15,7 @@ int main(int argc, char** argv) {
 	cout << d1 << " vs "  << d2 << " => " << (d1 < d2) << " | " << (d1 == d2) << (d1 > d2) << endl;
 	
 	cout << d3 << endl;
+	
 	return 0;
 }
 
