@@ -39,20 +39,24 @@ bool Distance_wrapper::operator>(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() > other._content->convert_to_meter()->getValue();
 }
 
-Distance_wrapper* Distance_wrapper::convert_to_meter(){
-	return new Distance_wrapper(_content->convert_to_meter());
+Distance_wrapper& Distance_wrapper::convert_to_meter(){
+	Distance_wrapper distance(_content->convert_to_meter());
+	return distance;
 }
 
-Distance_wrapper* Distance_wrapper::convert_to_feet(){
-	return new Distance_wrapper(_content->convert_to_feet());
+Distance_wrapper& Distance_wrapper::convert_to_feet(){
+	Distance_wrapper distance(_content->convert_to_feet());
+	return distance;
 }
 
-Distance_wrapper* Distance_wrapper::convert_to_leagues(){
-	return new Distance_wrapper(_content->convert_to_leagues());
+Distance_wrapper& Distance_wrapper::convert_to_leagues(){
+	Distance_wrapper distance(_content->convert_to_leagues());
+	return distance;
 }
 
-Distance_wrapper* Distance_wrapper::convert_to_nautic_miles(){
-	return new Distance_wrapper(_content->convert_to_nautic_miles());
+Distance_wrapper& Distance_wrapper::convert_to_nautic_miles(){
+	Distance_wrapper distance(_content->convert_to_nautic_miles());
+	return distance;
 }
 
 std::ostream& operator<<(std::ostream& os, Distance_wrapper const& distance){
