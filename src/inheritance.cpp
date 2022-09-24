@@ -10,6 +10,7 @@ const double LEAGUE_NAUTIC_MILES = 2.606928726;
 
 
 Distance_core::Distance_core(double value) : _value(value){
+
 }
 
 std::ostream& operator<<(std::ostream& os, Distance_core const* distance){
@@ -19,42 +20,42 @@ std::ostream& operator<<(std::ostream& os, Distance_core const* distance){
 Distance_wrapper::Distance_wrapper(Distance_core const*const content) : _content(content){
 }
 
-bool Distance_wrapper::operator==(Distance_wrapper other){
+bool Distance_wrapper::operator==(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() == other._content->convert_to_meter()->getValue();
 }
-bool Distance_wrapper::operator!=(Distance_wrapper other){
+bool Distance_wrapper::operator!=(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() != other._content->convert_to_meter()->getValue();
 }
-bool Distance_wrapper::operator<=(Distance_wrapper other){
+bool Distance_wrapper::operator<=(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() <= other._content->convert_to_meter()->getValue();
 }
-bool Distance_wrapper::operator>=(Distance_wrapper other){
+bool Distance_wrapper::operator>=(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() >= other._content->convert_to_meter()->getValue();
 }
-bool Distance_wrapper::operator<(Distance_wrapper other){
+bool Distance_wrapper::operator<(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() < other._content->convert_to_meter()->getValue();
 }
-bool Distance_wrapper::operator>(Distance_wrapper other){
+bool Distance_wrapper::operator>(Distance_wrapper& other){
 	return _content->convert_to_meter()->getValue() > other._content->convert_to_meter()->getValue();
 }
 
-Distance_wrapper Distance_wrapper::convert_to_meter(){
-	return Distance_wrapper(_content->convert_to_meter());
+Distance_wrapper* Distance_wrapper::convert_to_meter(){
+	return new Distance_wrapper(_content->convert_to_meter());
 }
 
-Distance_wrapper Distance_wrapper::convert_to_feet(){
-	return Distance_wrapper(_content->convert_to_feet());
+Distance_wrapper* Distance_wrapper::convert_to_feet(){
+	return new Distance_wrapper(_content->convert_to_feet());
 }
 
-Distance_wrapper Distance_wrapper::convert_to_leagues(){
-	return Distance_wrapper(_content->convert_to_leagues());
+Distance_wrapper* Distance_wrapper::convert_to_leagues(){
+	return new Distance_wrapper(_content->convert_to_leagues());
 }
 
-Distance_wrapper Distance_wrapper::convert_to_nautic_miles(){
-	return Distance_wrapper(_content->convert_to_nautic_miles());
+Distance_wrapper* Distance_wrapper::convert_to_nautic_miles(){
+	return new Distance_wrapper(_content->convert_to_nautic_miles());
 }
 
-std::ostream& operator<<(std::ostream& os, Distance_wrapper const distance){
+std::ostream& operator<<(std::ostream& os, Distance_wrapper const& distance){
 	return os << distance._content;
 }
 
