@@ -21,42 +21,56 @@ Distance_wrapper::Distance_wrapper(Distance_core const*const content) : _content
 }
 
 bool Distance_wrapper::operator==(Distance_wrapper& other){
-	return _content->convert_to_meter()->getValue() == other._content->convert_to_meter()->getValue();
+	const Distance_core* o1 = _content->convert_to_meter();
+	const Distance_core* o2 = other._content->convert_to_meter();
+	delete o1; delete o2;
+	return o1->getValue() == o2->getValue();
 }
 bool Distance_wrapper::operator!=(Distance_wrapper& other){
-	return _content->convert_to_meter()->getValue() != other._content->convert_to_meter()->getValue();
+	const Distance_core* o1 = _content->convert_to_meter();
+	const Distance_core* o2 = other._content->convert_to_meter();
+	delete o1; delete o2;
+	return o1->getValue() != o2->getValue();
 }
 bool Distance_wrapper::operator<=(Distance_wrapper& other){
-	return _content->convert_to_meter()->getValue() <= other._content->convert_to_meter()->getValue();
+	const Distance_core* o1 = _content->convert_to_meter();
+	const Distance_core* o2 = other._content->convert_to_meter();
+	delete o1; delete o2;
+	return o1->getValue() <= o2->getValue();
 }
 bool Distance_wrapper::operator>=(Distance_wrapper& other){
-	return _content->convert_to_meter()->getValue() >= other._content->convert_to_meter()->getValue();
+	const Distance_core* o1 = _content->convert_to_meter();
+	const Distance_core* o2 = other._content->convert_to_meter();
+	delete o1; delete o2;
+	return o1->getValue() >= o2->getValue();
 }
 bool Distance_wrapper::operator<(Distance_wrapper& other){
-	return _content->convert_to_meter()->getValue() < other._content->convert_to_meter()->getValue();
+	const Distance_core* o1 = _content->convert_to_meter();
+	const Distance_core* o2 = other._content->convert_to_meter();
+	delete o1; delete o2;
+	return o1->getValue() < o2->getValue();
 }
 bool Distance_wrapper::operator>(Distance_wrapper& other){
-	return _content->convert_to_meter()->getValue() > other._content->convert_to_meter()->getValue();
+	const Distance_core* o1 = _content->convert_to_meter();
+	const Distance_core* o2 = other._content->convert_to_meter();
+	delete o1; delete o2;
+	return o1->getValue() > o2->getValue();
 }
 
-Distance_wrapper& Distance_wrapper::convert_to_meter(){
-	Distance_wrapper distance(_content->convert_to_meter());
-	return distance;
+Distance_wrapper* Distance_wrapper::convert_to_meter(){
+	return new Distance_wrapper(_content->convert_to_meter());
 }
 
-Distance_wrapper& Distance_wrapper::convert_to_feet(){
-	Distance_wrapper distance(_content->convert_to_feet());
-	return distance;
+Distance_wrapper* Distance_wrapper::convert_to_feet(){
+	return new Distance_wrapper(_content->convert_to_feet());
 }
 
-Distance_wrapper& Distance_wrapper::convert_to_leagues(){
-	Distance_wrapper distance(_content->convert_to_leagues());
-	return distance;
+Distance_wrapper* Distance_wrapper::convert_to_leagues(){
+	return new Distance_wrapper(_content->convert_to_leagues());
 }
 
-Distance_wrapper& Distance_wrapper::convert_to_nautic_miles(){
-	Distance_wrapper distance(_content->convert_to_nautic_miles());
-	return distance;
+Distance_wrapper* Distance_wrapper::convert_to_nautic_miles(){
+	return new Distance_wrapper(_content->convert_to_nautic_miles());
 }
 
 std::ostream& operator<<(std::ostream& os, Distance_wrapper const& distance){

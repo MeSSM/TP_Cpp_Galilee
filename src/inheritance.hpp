@@ -23,10 +23,10 @@ class Distance_wrapper{
 	public:
 		Distance_wrapper(Distance_core const * const);
 		Distance_wrapper(Distance_wrapper const &) = delete;
-		Distance_wrapper& convert_to_meter();
-		Distance_wrapper& convert_to_feet();
-		Distance_wrapper& convert_to_leagues();
-		Distance_wrapper& convert_to_nautic_miles();
+		Distance_wrapper* convert_to_meter();
+		Distance_wrapper* convert_to_feet();
+		Distance_wrapper* convert_to_leagues();
+		Distance_wrapper* convert_to_nautic_miles();
 		bool operator==(Distance_wrapper& other);
 		bool operator!=(Distance_wrapper& other);
 		bool operator<=(Distance_wrapper& other);
