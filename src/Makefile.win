@@ -1,0 +1,37 @@
+# Project: TP1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = memory_1.o enum.o Distance.o inheritance.o
+LINKOBJ  = memory_1.o enum.o Distance.o inheritance.o
+LIBS     = -L"C:/TDM-GCC-64/lib" -L"C:/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/TDM-GCC-64/include" -I"C:/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include"
+CXXINCS  = -I"C:/TDM-GCC-64/include" -I"C:/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include" -I"C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++"
+BIN      = TP1.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+memory_1.o: memory_1.cpp
+	$(CPP) -c memory_1.cpp -o memory_1.o $(CXXFLAGS)
+
+enum.o: enum.cpp
+	$(CPP) -c enum.cpp -o enum.o $(CXXFLAGS)
+
+Distance.o: Distance.cpp
+	$(CPP) -c Distance.cpp -o Distance.o $(CXXFLAGS)
+
+inheritance.o: inheritance.cpp
+	$(CPP) -c inheritance.cpp -o inheritance.o $(CXXFLAGS)
